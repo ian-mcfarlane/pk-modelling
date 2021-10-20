@@ -9,6 +9,7 @@ class Protocol:
 
     Contains all parameters needed to run 2- or 3-compartment models, and dose function.
 
+    :param comps: int number indicating which model (2- or 3-compartment) to be used
     :param Q_p1: float transition rate between central component and peripheral component
     :param V_c: float volume of central component
     :param V_p1: float volume of peripheral component
@@ -23,7 +24,8 @@ class Protocol:
     :method dose: takes parameters t, X and returns X or 0, depending on value of t. Represents a variable dose function over time.
 
     """
-    def __init__(self, Q_p1, V_c, V_p1, CL, X, dose_on, dose_off = 0, k_a = 0):
+    def __init__(self, comps, Q_p1, V_c, V_p1, CL, X, dose_on, dose_off = 0, k_a = 0):
+        self.comps = comps
         self.Q_p1 = Q_p1
         self.V_c = V_c
         self.V_p1 = V_p1
