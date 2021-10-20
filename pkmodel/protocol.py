@@ -3,6 +3,7 @@
 #
 
 import numpy as np
+import matplotlib.pyplot as plt
 class Protocol:
     """A Pharmokinetic (PK) protocol
 
@@ -48,4 +49,4 @@ class Protocol:
         if self.dose_on == 0:
             return X * (t == 0)
         else:
-            return X * ((self.eval_subdiv - 1) * t % self.dose_on + self.dose_off < self.dose_on)
+            return X * ((self.eval_subdiv - 1) * t % (self.dose_on + self.dose_off) < self.dose_on)
