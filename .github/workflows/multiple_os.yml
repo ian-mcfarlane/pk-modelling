@@ -1,4 +1,4 @@
-# This workflow will install Python dependencies, run tests and lint with a variety of Python versions on the latest operating systems
+# This workflow will install Python dependencies, run tests and lint with Python 3.8 on the latest operating systems
 
 name: Run on multiple operating systems
 
@@ -35,6 +35,6 @@ jobs:
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --max-complexity=10 --max-line-length=127 --statistics
-    - name: Test with pytest
+    - name: Test with unittest
       run: |
         python -m unittest
