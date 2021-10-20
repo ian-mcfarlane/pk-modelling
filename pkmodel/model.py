@@ -1,9 +1,13 @@
-#
-# Model class
-#
+"""
+A model class for solving PK calculatins given a Protocol data class.
+"""
+from abc import ABC, abstractmethod
+from solution import Solution
+from protocol import Protocol
 
-class Model:
-    """A Pharmokinetic (PK) model
+
+class AbstractModel(ABC):
+    """An abstract base (PK) model
 
     Parameters
     ----------
@@ -12,6 +16,14 @@ class Model:
         an example paramter
 
     """
-    def __init__(self, value=42):
-        self.value = value
+    def __init__(self, protocol: Protocol):
+        self.__protocol = protocol
 
+    @abstractmethod
+    def solve_ode(self):
+        pass
+
+    @property
+    @abstractmethod
+    def get_solution(self) -> Solution:
+        pass
