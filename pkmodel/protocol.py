@@ -31,13 +31,15 @@ class Protocol:
         unless dose_on = 0 which overrides this)
     :optional param k_a: float for three-component model only absorption rate
         for subcutaneous dosing
+    :optional param graph_preview: bool to trigger graph preview of dosing
+        function (default value False -> preview not shown)
 
     :method dose: takes parameters t, X and returns X or 0, depending on value
         of t. Represents a variable dose function over time.
     """
 
     def __init__(self, comps, Q_p1, V_c, V_p1, CL, X, dose_on,
-                 dose_off=0, k_a=0):
+                 dose_off=0, k_a=0, graph_preview=False):
         self.comps = comps
         self.Q_p1 = Q_p1
         self.V_c = V_c
@@ -50,9 +52,9 @@ class Protocol:
         self.eval_subdiv = 1000
         self.t_eval = np.linspace(0, 1, self.eval_subdiv)
         self.y0 = np.array([0.0, 0.0])
+        self.graph_preview = graph_preview
 
-        dose_preview = input('Preview dosing function? y/n: ')
-        if dose_preview == 'y' or dose_preview == 'Y':
+        if self.graph_preview:
             plt.figure
             axs = plt.axes()
             axs.plot(self.t_eval, self.dose(self.t_eval, self.X))
