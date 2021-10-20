@@ -15,9 +15,9 @@ class Protocol:
     :param V_p1: float volume of peripheral component
     :param CL: float elimination rate for drug in central component
     :param X: float amount of drug administered
-    :param dose_on: int number of time units for which drug is administered at a time (dose_on = 0 -> single dose at time 0)
+    :param dose_on: int number of time units (thousandths of an hour) for which drug is administered at a time (dose_on = 0 -> single dose at time 0)
         If dose_off = 0, dose_on can be 0 (instantaneous dose) or 1 (continuous dose)
-    :optional param dose_off: int number of time units for which drug is not administered at a time
+    :optional param dose_off: int number of time units (thousandths of an hour) for which drug is not administered at a time
         (default value 0 -> drug is continuously administered, unless dose_on = 0 which overrides this) 
     :optional param k_a: float for three-component model only absorption rate for subcutaneous dosing
 
@@ -37,6 +37,16 @@ class Protocol:
         self.eval_subdiv = 1000
         self.t_eval = np.linspace(0, 1, self.eval_subdiv)
         self.y0 = np.array([0.0, 0.0])
+
+        dose_preview = input('Preview dosing function? y/n: ')
+        if dose_preview == 'y' or dose_preview == 'Y':
+            fig = plt.figure
+            axs = plt.axes()
+            axs.plot(self.t_eval, self.dose(self.t_eval, self.X))
+            axs.set_ylabel('Dose (ng)')
+            axs.set_xlabel('Time (hr)')
+            axs.set_title('Dose administered over time')
+            plt.show()
 
     def dose(self, t, X):
         """Dose function to be evaluated at all times t in [0,1] when solving ODEs
