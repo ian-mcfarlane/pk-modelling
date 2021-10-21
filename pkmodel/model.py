@@ -64,24 +64,9 @@ class TwoCompartmentModel(AbstractModel):
             fun=lambda t, y: self.rhs(t, y),
             t_span=[self.protocol.t_eval[0], self.protocol.t_eval[-1]],
             y0=self.protocol.y0, t_eval=self.protocol.t_eval
-<<<<<<< HEAD
         ) 
         return Solution(sol, self.protocol)
     
-=======
-        )
-        return Solution(sol)
-
-    @property
-    def get_solution(self) -> Solution:
-        """ Returns the Solution class of the solved PK model.
-
-        :return: Solution class used to display result.
-        :rtype: Solution
-        """
-        return self.solution
-
->>>>>>> 4b836125069bc3eaddddd1f5cc615c449d129bc9
 
 class ThreeCompartmentModel(AbstractModel):
 
@@ -125,18 +110,5 @@ class ThreeCompartmentModel(AbstractModel):
             t_span=[self.protocol.t_eval[0], self.protocol.t_eval[-1]],
             y0=self.protocol.y0, t_eval=self.protocol.t_eval
         )
-<<<<<<< HEAD
         return Solution(sol, self.protocol)
     
-=======
-        return Solution(sol)
-
-    @property
-    def get_solution(self) -> Solution:
-        """ Returns the Solution class of the solved PK model.
-
-        :return: Solution class used to display result.
-        :rtype: Solution
-        """
-        return self.solution
->>>>>>> 4b836125069bc3eaddddd1f5cc615c449d129bc9
