@@ -10,6 +10,8 @@ class SolutionTest(unittest.TestCase):
         """
         Tests Solution creation.
         """
-        model = pk.Solution()
-        self.assertEqual(model.value, 44)
+        protocol = pk.Protocol(3, 1.1, 2.2, 3.3, 4.4, 5.5, 6)
+        model = pk.ThreeCompartmentModel(protocol)
+        solution = pk.Solution(model)
+        self.assertEqual(solution.model, model)
 
