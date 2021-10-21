@@ -14,9 +14,9 @@ The drug diffuses between the central and peripheral compartments according to t
 
 The corresponding system of ordinary differential equations for this model is:
 
-![equation](https://latex.codecogs.com/gif.latex?%5Cfrac%7Bdq_c%7D%7Bdt%7D%20%3D%20%5Ctext%7BDose%7D%28t%29%20-%20%5Cfrac%7Bq_c%7D%7BV_c%7D%20CL%20-%20Q_%7Bp1%7D%20%5Cleft%20%28%20%5Cfrac%7Bq_c%7D%7BV_c%7D%20-%20%5Cfrac%7Bq_%7Bp1%7D%7D%7BV_%7Bp1%7D%7D%20%5Cright%20%29%2C)
+![equation](https://latex.codecogs.com/svg.latex?\frac{dq_c}{dt}&space;=&space;\text{Dose}(t)&space;-&space;\frac{q_c}{V_c}&space;CL&space;-&space;Q_{p1}&space;\left&space;(&space;\frac{q_c}{V_c}&space;-&space;\frac{q_{p1}}{V_{p1}}&space;\right&space;),)
 
-![equation](https://latex.codecogs.com/gif.latex?%5Cfrac%7Bdq_%7Bp1%7D%7D%7Bdt%7D%20%3D%20Q_%7Bp1%7D%20%5Cleft%20%28%20%5Cfrac%7Bq_c%7D%7BV_c%7D%20-%20%5Cfrac%7Bq_%7Bp1%7D%7D%7BV_%7Bp1%7D%7D%20%5Cright%20%29.)
+![equation](https://latex.codecogs.com/svg.latex?\frac{dq_{p1}}{dt}&space;=&space;Q_{p1}&space;\left&space;(&space;\frac{q_c}{V_c}&space;-&space;\frac{q_{p1}}{V_{p1}}&space;\right&space;).)
 
 Where:
 * q<sub>c</sub> is the quantity of the drug in the central compartment
@@ -35,11 +35,11 @@ The drug diffuses between central and peripheral compartments as in the 2-compar
 
 The corresponding system of ordinary differential equations for this model is:
 
-![equation](https://latex.codecogs.com/gif.latex?%5Cfrac%7Bdq_0%7D%7Bdt%7D%20%3D%20%5Ctext%7BDose%7D%28t%29%20-%20k_a%20q_0%2C)
+![equation](https://latex.codecogs.com/svg.latex?\frac{dq_0}{dt}&space;=&space;\text{Dose}(t)&space;-&space;k_a&space;q_0,)
 
-![equation](https://latex.codecogs.com/gif.latex?%5Cfrac%7Bdq_c%7D%7Bdt%7D%20%3D%20k_a%20q_0%20-%20%5Cfrac%7Bq_c%7D%7BV_c%7D%20CL%20-%20Q_%7Bp1%7D%20%5Cleft%20%28%20%5Cfrac%7Bq_c%7D%7BV_c%7D%20-%20%5Cfrac%7Bq_%7Bp1%7D%7D%7BV_%7Bp1%7D%7D%20%5Cright%20%29%2C)
+![equation](https://latex.codecogs.com/svg.latex?\frac{dq_c}{dt}&space;=&space;k_a&space;q_0&space;-&space;\frac{q_c}{V_c}&space;CL&space;-&space;Q_{p1}&space;\left&space;(&space;\frac{q_c}{V_c}&space;-&space;\frac{q_{p1}}{V_{p1}}&space;\right&space;),)
 
-![equation](https://latex.codecogs.com/gif.latex?%5Cfrac%7Bdq_%7Bp1%7D%7D%7Bdt%7D%20%3D%20Q_%7Bp1%7D%20%5Cleft%20%28%20%5Cfrac%7Bq_c%7D%7BV_c%7D%20-%20%5Cfrac%7Bq_%7Bp1%7D%7D%7BV_%7Bp1%7D%7D%20%5Cright%20%29%2C)
+![equation](https://latex.codecogs.com/svg.latex?\frac{dq_{p1}}{dt}&space;=&space;Q_{p1}&space;\left&space;(&space;\frac{q_c}{V_c}&space;-&space;\frac{q_{p1}}{V_{p1}}&space;\right&space;),)
 
 Where:
 * q<sub>0</sub> is the concentration of drug in the initial dosing subcutaneous compartment
