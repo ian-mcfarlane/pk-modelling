@@ -16,7 +16,7 @@ def parse_args(argv=None):
     parser.add_argument('-d', '--data_root', type=str, required=False, help="Path to location of csv file (default = './'",
                         default='./')
     parser.add_argument('-f', '--file_name', type=str, required=False, help="Filename for csv file containing model parameters",
-                        default='test.csv')
+                        default='example.csv')
     args = parser.parse_args(argv)
     
     return args
@@ -27,14 +27,16 @@ if __name__ == "__main__":
     # Load csv files
     with open(Path(args.data_root + args.file_name)) as f:
         reader = csv.reader(f, quoting=csv.QUOTE_NONNUMERIC)
-        data = list(reader)
+        try:
+            data = list(reader)
+        except ValueError:
+            raise ValueError("Strings in CSVs should be in double quotes.")
     
     # Create a Model object for each line in the csv file
     models = []
     for model_params in data:
 
         # create protocol
-        print(model_params)
         protocol = pk.protocol.Protocol(*model_params)
 
         # Check if 2 or 3 component model
