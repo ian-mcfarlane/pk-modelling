@@ -1,20 +1,51 @@
 import argparse
 import pkmodel as pk
+import csv
+from pathlib import Path
+import sys
+import numpy as np
 
 
-# def parse_args(argv=None):
-#     parser = argparse.ArgumentParser(description='Train neural net on .types data.')
-#     parser.add_argument('-d','--data_root',type=str,required=False,help="Root folder for relative paths in train/test files",default='/data/localhost/not-backed-up/turnbull/docks-train/')
-#     parser.add_argument('-i','--frozen_iter',type=int,required=False,help="Number of iterations to run with all layers frozen",default=1000)
+
+
+def parse_args(argv=None):
+    parser = argparse.ArgumentParser(description="Plot PK models using 2 or 3 compartment models")
+    parser.add_argument('-d', '--data_root', type=str, required=False, help="Path to location of csv file (default = './'",
+                        default='./')
+    parser.add_argument('-f', '--file_name', type=str, required=True, help="Filename for csv file containing model parameters",
+                        default='models.csv')
+    args = parser.parse_args(argv)
     
+    return args
 
-#     args = parser.parse_args(argv)
+
+if __name__ == "__main__":
+    args = parse_args()
+
+    with open(Path(args.data_root + args.file_name)) as f:
+        reader = csv.reader(f)
+        data = list(reader)
     
-#     return args
+    # Create a Model object for each line in the csv file
+    models = []
+    for model_params in data:
+        # create protocol
+        protocol = pk.protocol(*model_params)
+
+        # Check if 2 or 3 component model
+        if model_params[0] == 2:
+            models.append(model.TwoCompartmentModel(protocol))
+        elif model_params[0] == 3:
+            models.append(model.ThreeCompartmentModel(protocol))
+
+        else:
+            raise ValueError("Component number must be either 2 or 3.")
+        
+    # Generate graph
+    solution = pk.Solution(models)
 
 
-protocol = pk.protocol.Protocol(2, 1, 1, 1, 1, 1, 1, k_a=1)
-model = pk.model.ThreeCompartmentModel(protocol)
+        
 
-model.solution.graph()
+        
 
