@@ -6,14 +6,12 @@ import sys
 import numpy as np
 
 
-
-
 def parse_args(argv=None):
     parser = argparse.ArgumentParser(description="Plot PK models using 2 or 3 compartment models")
     parser.add_argument('-d', '--data_root', type=str, required=False, help="Path to location of csv file (default = './'",
                         default='./')
-    parser.add_argument('-f', '--file_name', type=str, required=True, help="Filename for csv file containing model parameters",
-                        default='models.csv')
+    parser.add_argument('-f', '--file_name', type=str, required=False, help="Filename for csv file containing model parameters",
+                        default='test.csv')
     args = parser.parse_args(argv)
     
     return args
@@ -29,8 +27,11 @@ if __name__ == "__main__":
     # Create a Model object for each line in the csv file
     models = []
     for model_params in data:
+        # convert values to floats
+        model_params = list(map(float, model_params))
         # create protocol
-        protocol = pk.protocol(*model_params)
+        print(model_params)
+        protocol = pk.protocol.Protocol(*model_params)
 
         # Check if 2 or 3 component model
         if model_params[0] == 2:
@@ -42,7 +43,7 @@ if __name__ == "__main__":
             raise ValueError("Component number must be either 2 or 3.")
         
     # Generate graph
-    solution = pk.Solution(models)
+    solution = pk.solution.Solution(models)
 
 
         
