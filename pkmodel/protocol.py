@@ -38,8 +38,9 @@ class Protocol:
         of t. Represents a variable dose function over time.
     """
 
-    def __init__(self, comps, Q_p1, V_c, V_p1, CL, X, dose_on,
-                 dose_off=0, k_a=0, graph_preview=False):
+    def __init__(self, comps: int, Q_p1: float, V_c: float, V_p1: float,
+                 CL: float, X: float, dose_on: int, dose_off: int = 0,
+                 k_a: float = 0, graph_preview: bool = False):
         self.comps = comps
         self.Q_p1 = Q_p1
         self.V_c = V_c
@@ -53,6 +54,15 @@ class Protocol:
         self.t_eval = np.linspace(0, 1, self.eval_subdiv)
         self.y0 = np.array([0.0, 0.0])
         self.graph_preview = graph_preview
+
+        assert comps == 2 or comps == 3, "Number of components must be 2 or 3"
+        assert Q_p1 >= 0, "Compartment transition rate must be non-negative"
+        assert V_c > 0 and V_p1 > 0, "Volume of compartments must be positive"
+        assert CL >= 0, "Clearance rate must be non-negative"
+        assert X > 0, "Dose administered must be positive"
+        assert dose_on >= 0, "dose_on must be non-negative"
+        assert dose_off >= 0, "dose_off must be non-negative"
+        assert k_a >= 0, "Subcutaneous absorption rate must be non-negative"
 
         if self.graph_preview:
             plt.figure
@@ -78,3 +88,23 @@ class Protocol:
         else:
             return X * ((self.eval_subdiv - 1) * t % (self.dose_on
                         + self.dose_off) < self.dose_on)
+
+    def __eq__(self, other_prot):
+        if self.comps != other_prot.comps:
+            return False
+        elif self.Q_p1 != other_prot.Q_p1:
+            return False
+        elif self.V_c != other_prot.V_c:
+            return False
+        elif self.V_p1 != other_prot.V_p1:
+            return False
+        elif self.X != other_prot.X:
+            return False
+        elif self.dose_on != other_prot.dose_on:
+            return False
+        elif self.dose_off != other_prot. dose_off:
+            return False
+        elif self.k_a != other_prot.k_a:
+            return False
+
+        return True
