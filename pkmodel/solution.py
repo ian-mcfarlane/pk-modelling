@@ -12,7 +12,7 @@ class Solution:
         """Looks at individual model created in model and prepares to plot the graph.
         """
     def graph(self):
-        for model in models:
+        for model in self.models:
             if model.protocol.comps == 2:
                 plt.plot(model.sol.t, model.sol.y[0, :], label="Two-compertment model" + '- q_c')
                 plt.plot(model.sol.t, model.sol.y[1, :], label="Two-compertment model" + '- q_p1')
