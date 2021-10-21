@@ -45,7 +45,7 @@ class TwoCompartmentModel(AbstractModel):
         :type y: [type]
         :return: [description]
         :rtype: [type]
-        """        
+        """
         Q_p1 = self.protocol.Q_p1
         V_c = self.protocol.V_c
         V_p1 = self.protocol.V_p1
@@ -63,22 +63,22 @@ class TwoCompartmentModel(AbstractModel):
 
         :return: [description]
         :rtype: [type]
-        """        
-        
+        """
+
         sol = scipy.integrate.solve_ivp(
             fun=lambda t, y: self.rhs(t, y),
             t_span=[self.protocol.t_eval[0], self.protocol.t_eval[-1]],
             y0=self.protocol.y0, t_eval=self.protocol.t_eval
-        ) 
+        )
         return Solution(sol)
-    
+
     @property
     def get_solution(self) -> Solution:
         """ Returns the Solution class of the solved PK model.
 
         :return: Solution class used to display result.
         :rtype: Solution
-        """        
+        """
         return self.solution
 
 
@@ -97,7 +97,7 @@ class ThreeCompartmentModel(AbstractModel):
         :type y: [type]
         :return: [description]
         :rtype: [type]
-        """       
+        """
         Q_p1 = self.protocol.Q_p1
         V_c = self.protocol.V_c
         V_p1 = self.protocol.V_p1
@@ -117,20 +117,20 @@ class ThreeCompartmentModel(AbstractModel):
 
         :return: [description]
         :rtype: [type]
-        """        
-        
+        """
+
         sol = scipy.integrate.solve_ivp(
             fun=lambda t, y: self.rhs(t, y),
             t_span=[self.protocol.t_eval[0], self.protocol.t_eval[-1]],
             y0=self.protocol.y0, t_eval=self.protocol.t_eval
-        ) 
+        )
         return Solution(sol)
-    
+
     @property
     def get_solution(self) -> Solution:
         """ Returns the Solution class of the solved PK model.
 
         :return: Solution class used to display result.
         :rtype: Solution
-        """        
+        """
         return self.solution
