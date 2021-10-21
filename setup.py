@@ -7,19 +7,8 @@ from setuptools import setup, find_packages
 def get_version():
     """
     Get version number from the pkmodel module.
-
-    The easiest way would be to just ``import pkmodel ``, but note that this may
-    fail if the dependencies have not been installed yet. Instead, we've put
-    the version number in a simple version_info module, that we'll import here
-    by temporarily adding the oxrse directory to the pythonpath using sys.path.
     """
-    import os
-    import sys
-
-    sys.path.append(os.path.abspath('pkmodel'))
-    from version_info import VERSION as version
-    sys.path.pop()
-
+    from pkmodel.version_info import VERSION as version
     return version
 
 
@@ -39,21 +28,29 @@ setup(
     # Version
     version=get_version(),
 
-    description='An example Python project.',
+    description='Pharmokinetics Modelling Library.',
 
     long_description=get_readme(),
 
     license='MIT license',
 
-    # author='',
+    author=("Elliot Barbeary, "
+            "Mona Furukawa, "
+            "Hazel Wee Ling, "
+            "Ian McFarlane, "
+            "Oliver Turnbull"),
 
-    # author_email='',
+    author_email=("elliot.barbeary@dtc.ox.ac.uk, "
+                  "mona.furukawa@dtc.ox.ac.uk, "
+                  "hazel.wee@dtc.ox.ac.uk, "
+                  "ian.mcfarlane@dtc.ox.ac.uk, "
+                  "oliver.turnbull@dtc.ox.ac.uk"),
 
-    maintainer='Martin Robinson',
+    maintainer='Ian McFarlane',
 
-    maintainer_email='martin.robinson@cs.ox.ac.uk',
+    maintainer_email='ian.mcfarlane@dtc.ox.ac.uk',
 
-    url='https://github.com/SABS-R3/2020-software-engineering-projects-pk',
+    url='https://github.com/ian-mcfarlane/pk-modelling/',
 
     # Packages to include
     packages=find_packages(include=('pkmodel', 'pkmodel.*')),
