@@ -6,7 +6,7 @@ import sys
 import numpy as np
 
 
-def parse_args():
+def parse_args(argv=None):
     """ Parses command line arugments.
 
     :return: args
@@ -32,7 +32,7 @@ if __name__ == "__main__":
     # Create a Model object for each line in the csv file
     models = []
     for model_params in data:
-        
+
         # create protocol
         print(model_params)
         protocol = pk.protocol.Protocol(*model_params)
