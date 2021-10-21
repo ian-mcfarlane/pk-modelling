@@ -38,9 +38,11 @@ class Protocol:
         of t. Represents a variable dose function over time.
     """
 
-    def __init__(self, comps: int, Q_p1: float, V_c: float, V_p1: float,
-                 CL: float, X: float, dose_on: int, dose_off: int = 0,
-                 k_a: float = 0, graph_preview: bool = False):
+    def __init__(self, label: str, comps: int, Q_p1: float, V_c: float,
+                 V_p1: float, CL: float, X: float, dose_on: int,
+                 dose_off: int = 0, k_a: float = 0,
+                 graph_preview: bool = False):
+        self.label = label
         if (comps == 2 or comps == 3):
             self.comps = comps
         else:
