@@ -2,8 +2,8 @@
 A model class for solving PK calculatins given a Protocol data class.
 """
 from abc import ABC, abstractmethod
-from solution import Solution
-from protocol import Protocol
+from .solution import Solution
+from .protocol import Protocol
 import scipy.integrate
 
 
@@ -111,4 +111,4 @@ class ThreeCompartmentModel(AbstractModel):
             y0=self.protocol.y0, t_eval=self.protocol.t_eval
         )
         return Solution(sol, self.protocol)
-    
+
