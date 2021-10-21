@@ -6,11 +6,11 @@ class Solution:
     def __init__(self, sol, protocol: Protocol):
         self.sol = sol
         self.graph()
-        self.protocol = Protocol
+        self.protocol = protocol
         
     def graph(self):
         
-        if self.protocol.no_of_compartment == 2:
+        if self.protocol.comps == 2:
             plt.plot(sol.t, sol.y[0, :], label=model['name'] + '- q_c')
             plt.plot(sol.t, sol.y[1, :], label=model['name'] + '- q_p1')
         
