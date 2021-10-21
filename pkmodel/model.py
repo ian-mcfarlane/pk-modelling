@@ -18,12 +18,16 @@ class AbstractModel(ABC):
 
     """
     def __init__(self, protocol: Protocol):
-        pass
+        self.protocol = protocol
+    
+    @abstractmethod
+    def __eq__(self, other_model) -> bool:
+        return self.protocol == other_model.protocol
 
     @abstractmethod
     def solve_ode(self):
         pass
-
+    
 
 class TwoCompartmentModel(AbstractModel):
 
@@ -67,6 +71,9 @@ class TwoCompartmentModel(AbstractModel):
         ) 
 
         return sol
+
+    def __eq__(self, other_model) -> bool:
+        return super().__eq__(other_model)
 
 
 class ThreeCompartmentModel(AbstractModel):
@@ -113,3 +120,6 @@ class ThreeCompartmentModel(AbstractModel):
         )
 
         return sol
+    
+    def __eq__(self, other_model) -> bool:
+        return super().__eq__(other_model)
