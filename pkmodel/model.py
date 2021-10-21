@@ -8,20 +8,18 @@ import scipy.integrate
 
 
 class AbstractModel(ABC):
-    """An abstract base (PK) model
+    """ An abstract class for PK models"""    
 
-    Parameters
-    ----------
-
-    value: numeric, optional
-        an example paramter
-
-    """
     def __init__(self, protocol: Protocol):
+        """ Constructs object using a Protocol object
+
+        :param protocol: Protocol object with all necessary parameters for model creation
+        :type protocol: Protocol
+        """        
         self.protocol = protocol
     
     @abstractmethod
-    def __eq__(self, other_model) -> bool:
+    def __eq__(self, other_model) -> bool:    
         return self.protocol == other_model.protocol
 
     @abstractmethod
@@ -32,18 +30,24 @@ class AbstractModel(ABC):
 class TwoCompartmentModel(AbstractModel):
 
     def __init__(self, protocol: Protocol):
+        """ 
+        Constructs object using a Protocol object
+
+        :param protocol: Protocol object with all necessary parameters for model creation
+        :type protocol: Protocol
+        """      
         self.protocol = protocol
         self.sol = self.solve_ode()
 
     def rhs(self, t, y):
-        """[summary]
+        """ Right-hand side of ODE being solved for PK model
 
-        :param t: [description]
-        :type t: [type]
-        :param y: [description]
-        :type y: [type]
-        :return: [description]
-        :rtype: [type]
+        :param t: Time variable
+        :type t: float
+        :param y: drug concentration in different compartments
+        :type y: list[float]
+        :return: LHS of ODE
+        :rtype: list[float]
         """
         Q_p1 = self.protocol.Q_p1
         V_c = self.protocol.V_c
@@ -58,10 +62,10 @@ class TwoCompartmentModel(AbstractModel):
         return [dqc_dt, dqp1_dt]
 
     def solve_ode(self):
-        """[summary]
+        """ Solves the ODE using scipy.integrate libary 
 
-        :return: [description]
-        :rtype: [type]
+        :return: The solved ODE
+        :rtype: list[float]
         """
 
         sol = scipy.integrate.solve_ivp(
@@ -79,18 +83,25 @@ class TwoCompartmentModel(AbstractModel):
 class ThreeCompartmentModel(AbstractModel):
 
     def __init__(self, protocol: Protocol):
+        """ 
+        Constructs object using a Protocol object
+
+        :param protocol: Protocol object with all necessary parameters for model creation
+        :type protocol: Protocol
+        """     
         self.protocol = protocol
         self.sol = self.solve_ode()
 
     def rhs(self, t, y):
-        """[summary]
+        """
+        Right-hand side of ODE being solved for PK model
 
-        :param t: [description]
-        :type t: [type]
-        :param y: [description]
-        :type y: [type]
-        :return: [description]
-        :rtype: [type]
+        :param t: Time variable
+        :type t: float
+        :param y: drug concentration in different compartments
+        :type y: list[float]
+        :return: LHS of ODE
+        :rtype
         """
         Q_p1 = self.protocol.Q_p1
         V_c = self.protocol.V_c
@@ -107,10 +118,10 @@ class ThreeCompartmentModel(AbstractModel):
         return [dqo_dt, dqc_dt, dqp1_dt]
 
     def solve_ode(self):
-        """[summary]
+        """ Solves the ODE using scipy.integrate libary 
 
-        :return: [description]
-        :rtype: [type]
+        :return: The solved ODE
+        :rtype: list[float]
         """
 
         sol = scipy.integrate.solve_ivp(
