@@ -11,7 +11,7 @@ class ProtocolTest(unittest.TestCase):
         Tests Protocol creation.
         """
         # Test protocol creation with expected parameters
-        protocol = pk.Protocol(3, 1.1, 2.2, 3.3, 4.4, 5.5, 6, 7, 8, True)
+        protocol = pk.Protocol(3, 1.1, 2.2, 3.3, 4.4, 5.5, 6, 7, 8, False)
         self.assertEqual(protocol.comps, 3)
         self.assertEqual(protocol.Q_p1, 1.1)
         self.assertEqual(protocol.V_c, 2.2)
@@ -21,7 +21,7 @@ class ProtocolTest(unittest.TestCase):
         self.assertEqual(protocol.dose_on, 6)
         self.assertEqual(protocol.dose_off, 7)
         self.assertEqual(protocol.k_a, 8)
-        self.assertEqual(protocol.graph_preview, True)
+        self.assertEqual(protocol.graph_preview, False)
 
         # Test protocol creation without optional arguments
         protocol = pk.Protocol(3, 1.1, 2.2, 3.3, 4.4, 5.5, 6)
@@ -29,16 +29,16 @@ class ProtocolTest(unittest.TestCase):
         self.assertEqual(protocol.k_a, 0)
         self.assertEqual(protocol.graph_preview, False)
 
-        # Test protocol raises exceptions for invalid inputs
-        with self.assertRaises(AssertionError):
+        # Test protocol raises Value Errors for invalid inputs
+        with self.assertRaises(ValueError):
             protocol = pk.Protocol(200, 1.1, 2.2, 3.3, 4.4, 5.5, 6)
-        with self.assertRaises(AssertionError):
+        with self.assertRaises(ValueError):
             protocol = pk.Protocol(2, -1, 2.2, 3.3, 4.4, 5.5, 6)
-        with self.assertRaises(AssertionError):
+        with self.assertRaises(ValueError):
             protocol = pk.Protocol(2, 1.1, -2.2, 3.3, 4.4, 5.5, 6)
-        with self.assertRaises(AssertionError):
+        with self.assertRaises(ValueError):
             protocol = pk.Protocol(2, 1.1, 2.2, -3.3, 4.4, 5.5, 6)
-        with self.assertRaises(AssertionError):
+        with self.assertRaises(ValueError):
             protocol = pk.Protocol(2, 1.1, 2.2, 3.3, -4.4, 5.5, 6)
         with self.assertRaises(ValueError):
             protocol = pk.Protocol("hello", 1.1, 2.2, 3.3, -4.4, 5.5, 6)
@@ -48,7 +48,7 @@ class ProtocolTest(unittest.TestCase):
         Tests Protocol equality function.
         """
         protocol1 = pk.Protocol(2, 1.1, 2.2, 3.3, 4.4, 5.5, 6, 7, 8, False)
-        protocol2 = pk.Protocol(3, 8.8, 7.7, 6.6, 5.5, 4.4, 3, 2, 1, True)
+        protocol2 = pk.Protocol(3, 8.8, 7.7, 6.6, 5.5, 4.4, 3, 2, 1, False)
         self.assertEqual(protocol1, protocol1)
         self.assertNotEqual(protocol1, protocol2)
 
