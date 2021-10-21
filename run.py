@@ -26,7 +26,7 @@ if __name__ == "__main__":
 
     # Load csv files
     with open(Path(args.data_root + args.file_name)) as f:
-        reader = csv.reader(f)
+        reader = csv.reader(f, quoting=csv.QUOTE_NONNUMERIC)
         data = list(reader)
     
     # Create a Model object for each line in the csv file
