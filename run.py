@@ -34,9 +34,9 @@ if __name__ == "__main__":
 
         # Check if 2 or 3 component model
         if model_params[0] == 2:
-            models.append(model.TwoCompartmentModel(protocol))
+            models.append(pk.model.TwoCompartmentModel(protocol))
         elif model_params[0] == 3:
-            models.append(model.ThreeCompartmentModel(protocol))
+            models.append(pk.model.ThreeCompartmentModel(protocol))
 
         else:
             raise ValueError("Component number must be either 2 or 3.")
