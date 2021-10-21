@@ -15,7 +15,7 @@ class AbstractModel(ABC):
 
         :param protocol: Protocol object with all necessary parameters for model creation
         :type protocol: Protocol
-        """        
+        """  
         self.protocol = protocol
     
     @abstractmethod
