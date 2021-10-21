@@ -1,5 +1,5 @@
 import matplotlib.pylab as plt
-from protocol import Protocol
+from .protocol import Protocol
 
 
 class Solution:
