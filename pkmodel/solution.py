@@ -28,17 +28,17 @@ class Solution:
         for model in self.models:
             if model.protocol.comps == 2:
                 plt.plot(model.sol.t, model.sol.y[0, :],
-                         label="Two-compartment model" + '- q_c')
+                         label=model.protocol.label + '- q_c')
                 plt.plot(model.sol.t, model.sol.y[1, :],
-                         label="Two-compartment model" + '- q_p1')
+                         label=model.protocol.label + '- q_p1')
 
             else:
                 plt.plot(model.sol.t, model.sol.y[0, :],
-                         label="Three-compartment model" + '- q_o')
+                         label=model.protocol.label + '- q_o')
                 plt.plot(model.sol.t, model.sol.y[1, :],
-                         label="Three-compartment model" + '- q_c')
+                         label=model.protocol.label + '- q_c')
                 plt.plot(model.sol.t, model.sol.y[2, :],
-                         label="Three-compartment model" + '- q_p1')
+                         label=model.protocol.label + '- q_p1')
 
         plt.legend()
         plt.title("The change in drug quantity")
