@@ -7,7 +7,7 @@ of Parmokinetic (PK) models
 # Import version info
 from .version_info import VERSION_INT, VERSION  # noqa
 
-# Import main classes
+
 from .model import ThreeCompartmentModel, TwoCompartmentModel    # noqa
 from .protocol import Protocol    # noqa
 from .solution import Solution     # noqa
