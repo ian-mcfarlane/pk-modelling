@@ -2,8 +2,6 @@ import argparse
 import pkmodel as pk
 import csv
 from pathlib import Path
-import sys
-import numpy as np
 
 
 def parse_args(argv=None):
@@ -11,15 +9,16 @@ def parse_args(argv=None):
 
     :return: args
     :rtype: Namespace
-    """    
+    """
     parser = argparse.ArgumentParser(description="Plot PK models using 2 or 3 compartment models")
-    parser.add_argument('-d', '--data_root', type=str, required=False, help="Path to location of csv file (default = './'",
+    parser.add_argument('-d', '--data_root', type=str, required=False, help="Path to location of csv (default = './')",
                         default='./')
-    parser.add_argument('-f', '--file_name', type=str, required=False, help="Filename for csv file containing model parameters",
+    parser.add_argument('-f', '--file_name', type=str, required=False, help="Filename for csv containing model parameters",
                         default='test.csv')
     args = parser.parse_args(argv)
-    
+
     return args
+
 
 if __name__ == "__main__":
     args = parse_args()
@@ -28,7 +27,7 @@ if __name__ == "__main__":
     with open(Path(args.data_root + args.file_name)) as f:
         reader = csv.reader(f, quoting=csv.QUOTE_NONNUMERIC)
         data = list(reader)
-    
+
     # Create a Model object for each line in the csv file
     models = []
     for model_params in data:
@@ -45,12 +44,6 @@ if __name__ == "__main__":
 
         else:
             raise ValueError("Component number must be either 2 or 3.")
-        
+
     # Generate graph
     solution = pk.solution.Solution(models)
-
-
-        
-
-        
-
