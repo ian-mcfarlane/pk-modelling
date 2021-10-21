@@ -6,7 +6,12 @@ import sys
 import numpy as np
 
 
-def parse_args(argv=None):
+def parse_args():
+    """ Parses command line arugments.
+
+    :return: args
+    :rtype: Namespace
+    """    
     parser = argparse.ArgumentParser(description="Plot PK models using 2 or 3 compartment models")
     parser.add_argument('-d', '--data_root', type=str, required=False, help="Path to location of csv file (default = './'",
                         default='./')
@@ -16,10 +21,10 @@ def parse_args(argv=None):
     
     return args
 
-
 if __name__ == "__main__":
     args = parse_args()
 
+    # Load csv files
     with open(Path(args.data_root + args.file_name)) as f:
         reader = csv.reader(f)
         data = list(reader)
@@ -27,8 +32,7 @@ if __name__ == "__main__":
     # Create a Model object for each line in the csv file
     models = []
     for model_params in data:
-        # convert values to floats
-        model_params = list(map(float, model_params))
+        
         # create protocol
         print(model_params)
         protocol = pk.protocol.Protocol(*model_params)
