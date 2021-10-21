@@ -51,7 +51,11 @@ class Protocol:
         self.k_a = k_a
         self.eval_subdiv = 1000
         self.t_eval = np.linspace(0, 1, self.eval_subdiv)
-        self.y0 = np.array([0.0, 0.0])
+        if self.comps == 2:
+            self.y0 = np.array([0.0, 0.0])
+        elif self.comps == 3:
+            self.y0 = np.array([0.0, 0.0, 0.0])
+
         self.graph_preview = graph_preview
 
         if self.graph_preview:
