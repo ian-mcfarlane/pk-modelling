@@ -42,40 +42,42 @@ class Protocol:
                  V_p1: float, CL: float, X: float, dose_on: int,
                  dose_off: int = 0, k_a: float = 0,
                  graph_preview: bool = False):
-        self.label = label
-        if (comps == 2 or comps == 3):
-            self.comps = comps
+        self.label = str(label)
+        if (int(comps) == 2 or int(comps) == 3):
+            self.comps = int(comps)
         else:
             raise ValueError("Number of components must be 2 or 3")
-        if (Q_p1 >= 0):
-            self.Q_p1 = Q_p1
+        if (float(Q_p1) >= 0):
+            self.Q_p1 = float(Q_p1)
         else:
-            raise ValueError("Compartment transition rate must be non-negative")
-        if (V_c > 0 and V_p1 > 0):
-            self.V_c = V_c
-            self.V_p1 = V_p1
+            raise ValueError("Compartment transition rate must be"
+                             + "non-negative")
+        if (float(V_c) > 0 and float(V_p1) > 0):
+            self.V_c = float(V_c)
+            self.V_p1 = float(V_p1)
         else:
             raise ValueError("Volume of compartments must be positive")
-        if (CL >= 0):
-            self.CL = CL
+        if (float(CL) >= 0):
+            self.CL = float(CL)
         else:
             raise ValueError("Clearance rate must be non-negative")
-        if (X > 0):
-            self.X = X
+        if (float(X) > 0):
+            self.X = float(X)
         else:
             raise ValueError("Dose administered must be positive")
-        if (dose_on >= 0):
-            self.dose_on = dose_on
+        if (int(dose_on) >= 0):
+            self.dose_on = int(dose_on)
         else:
             raise ValueError("dose_on must be non-negative")
-        if (dose_off >= 0):
-            self.dose_off = dose_off
+        if (int(dose_off) >= 0):
+            self.dose_off = int(dose_off)
         else:
             raise ValueError("dose_off must be non-negative")
-        if (k_a >= 0):
-            self.k_a = k_a
+        if (float(k_a) >= 0):
+            self.k_a = float(k_a)
         else:
-            raise ValueError("Subcutaneous absorption rate must be non-negative")
+            raise ValueError("Subcutaneous absorption rate must be"
+                             + "non-negative")
 
         self.eval_subdiv = 1000
         self.t_eval = np.linspace(0, 1, self.eval_subdiv)
