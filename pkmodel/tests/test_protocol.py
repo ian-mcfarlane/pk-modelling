@@ -30,7 +30,18 @@ class ProtocolTest(unittest.TestCase):
         self.assertEqual(protocol.graph_preview, False)
 
         # Test protocol raises exceptions for invalid inputs
-        # self.assertRaises(ValueError)
+        with self.assertRaises(AssertionError):
+            protocol = pk.Protocol(200, 1.1, 2.2, 3.3, 4.4, 5.5, 6)
+        with self.assertRaises(AssertionError):
+            protocol = pk.Protocol(2, -1, 2.2, 3.3, 4.4, 5.5, 6)
+        with self.assertRaises(AssertionError):
+            protocol = pk.Protocol(2, 1.1, -2.2, 3.3, 4.4, 5.5, 6)
+        with self.assertRaises(AssertionError):
+            protocol = pk.Protocol(2, 1.1, 2.2, -3.3, 4.4, 5.5, 6)
+        with self.assertRaises(AssertionError):
+            protocol = pk.Protocol(2, 1.1, 2.2, 3.3, -4.4, 5.5, 6)
+        with self.assertRaises(ValueError):
+            protocol = pk.Protocol("hello", 1.1, 2.2, 3.3, -4.4, 5.5, 6)
 
     def test__eq__(self):
         """
