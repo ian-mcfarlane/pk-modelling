@@ -20,7 +20,7 @@ class ProtocolTest(unittest.TestCase):
         self.assertEqual(protocol.X, 5.5)
         self.assertEqual(protocol.dose_on, 6)
         self.assertEqual(protocol.dose_off, 7)
-        self.assertEqual(protocol.k_a, 8.8)
+        self.assertEqual(protocol.k_a, 8)
         self.assertEqual(protocol.graph_preview, True)
 
         # Test protocol creation without optional arguments
