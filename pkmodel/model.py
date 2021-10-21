@@ -24,11 +24,6 @@ class AbstractModel(ABC):
     def solve_ode(self):
         pass
 
-    @property
-    @abstractmethod
-    def get_solution(self) -> Solution:
-        pass
-
 
 class TwoCompartmentModel(AbstractModel):
 
@@ -70,17 +65,8 @@ class TwoCompartmentModel(AbstractModel):
             t_span=[self.protocol.t_eval[0], self.protocol.t_eval[-1]],
             y0=self.protocol.y0, t_eval=self.protocol.t_eval
         ) 
-        return Solution(sol)
+        return Solution(sol, self.protocol)
     
-    @property
-    def get_solution(self) -> Solution:
-        """ Returns the Solution class of the solved PK model.
-
-        :return: Solution class used to display result.
-        :rtype: Solution
-        """        
-        return self.solution
-
 
 class ThreeCompartmentModel(AbstractModel):
 
@@ -123,14 +109,6 @@ class ThreeCompartmentModel(AbstractModel):
             fun=lambda t, y: self.rhs(t, y),
             t_span=[self.protocol.t_eval[0], self.protocol.t_eval[-1]],
             y0=self.protocol.y0, t_eval=self.protocol.t_eval
-        ) 
-        return Solution(sol)
+        )
+        return Solution(sol, self.protocol)
     
-    @property
-    def get_solution(self) -> Solution:
-        """ Returns the Solution class of the solved PK model.
-
-        :return: Solution class used to display result.
-        :rtype: Solution
-        """        
-        return self.solution
