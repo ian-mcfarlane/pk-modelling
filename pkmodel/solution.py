@@ -1,6 +1,7 @@
 import matplotlib.pylab as plt
     
-    """This code will import the object model and graph the solutions."""
+"""This code will import the list models, which contains model objects created in model.py
+    and graph the solution. """
 
 
 class Solution:
