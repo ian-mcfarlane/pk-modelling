@@ -3,7 +3,7 @@
 name: OS Tests
 
 on:
-  pull_request:
+  workflow_dispatch:
     branches: [ master ]
 
 jobs:
