@@ -20,3 +20,12 @@ class ProtocolTest(unittest.TestCase):
         self.assertEqual(model.dose_off, 7)
         self.assertEqual(model.k_a, 8.8)
 
+    def test__eq__(self):
+        """
+        Tests Protocol equality function.
+        """
+        protocol1 = pk.Protocol(1.1, 2.2, 3.3, 4.4, 5.5, 6, 7, 8, False)
+        protocol2 = pk.Protocol(8.8, 7.7, 6.6, 5.5, 4.4, 3, 2, 1, True)
+        self.assertEqual(protocol1, protocol1)
+        self.assertNotEqual(protocol1, protocol2)
+
