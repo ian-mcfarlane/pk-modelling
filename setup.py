@@ -61,6 +61,8 @@ setup(
         'numpy',
         'matplotlib',
         'scipy',
+        'abc',
+        'datetime'
     ],
     extras_require={
         'docs': [
@@ -71,7 +73,9 @@ setup(
         ],
         'dev': [
             # Flake8 for code style checking
-            'flake8>=3',
+            'flake8>=3', 
+            # Unittest for testing main codes: testsolution, testprotocol, testmodel.
+            'unittest'
         ],
     },
 )
