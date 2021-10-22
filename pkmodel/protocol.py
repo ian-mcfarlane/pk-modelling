@@ -103,13 +103,17 @@ class Protocol:
                         + self.dose_off) < self.dose_on)
 
     def __eq__(self, other_prot):
-        if self.comps != other_prot.comps:
+        if self.label != other_prot.label:
+            return False
+        elif self.comps != other_prot.comps:
             return False
         elif self.Q_p1 != other_prot.Q_p1:
             return False
         elif self.V_c != other_prot.V_c:
             return False
         elif self.V_p1 != other_prot.V_p1:
+            return False
+        elif self.CL != other_prot.CL:
             return False
         elif self.X != other_prot.X:
             return False

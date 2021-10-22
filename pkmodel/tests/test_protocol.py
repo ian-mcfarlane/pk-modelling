@@ -19,7 +19,7 @@ class ProtocolTest(unittest.TestCase):
         self.assertEqual(protocol.V_p1, 3.3)
         self.assertEqual(protocol.CL, 4.4)
         self.assertEqual(protocol.X, 5.5)
-        self.assertEqual(protocol.dose_on, 6)
+        self.assertEqual(protocol.dose_on, 0)
         self.assertEqual(protocol.dose_off, 7)
         self.assertEqual(protocol.k_a, 8)
         self.assertEqual(protocol.graph_preview, False)
@@ -60,6 +60,7 @@ class ProtocolTest(unittest.TestCase):
         self.assertEqual(protocol1, protocol1)
 
         protocols = [
+            pk.Protocol("Different", 2, 1.1, 2.2, 3.3, 4.4, 5.5, 6, 7, 8, False),
             pk.Protocol("test", 3, 1.1, 2.2, 3.3, 4.4, 5.5, 6, 7, 8, False),
             pk.Protocol("test", 2, 1, 2.2, 3.3, 4.4, 5.5, 6, 7, 8, False),
             pk.Protocol("test", 2, 1.1, 2, 3.3, 4.4, 5.5, 6, 7, 8, False),
