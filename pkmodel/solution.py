@@ -1,4 +1,5 @@
 import matplotlib.pylab as plt
+import datetime
 
 
 class Solution:
@@ -10,8 +11,8 @@ class Solution:
 
     def __init__(self, models, no_graph=False):
         self.models = models
-        if not no_graph:
-            self.graph()
+        self.no_graph = no_graph
+        self.graph()
 
     def graph(self):
         """Function graph will use the for loop to go through the list of models.
@@ -68,4 +69,7 @@ class Solution:
         plt.title("The change in drug quantity")
         plt.ylabel('drug mass [ng]')
         plt.xlabel('time [h]')
-        plt.show()
+        now = datetime.datetime.now()
+        plt.savefig("Outputs/PK-Modelling-" + str(now.strftime("%Y%m%d_%H-%M-%S")) + ".png")
+        if not self.no_graph:
+            plt.show()
