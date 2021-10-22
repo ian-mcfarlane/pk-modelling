@@ -12,6 +12,6 @@ class SolutionTest(unittest.TestCase):
         """
         protocol = pk.Protocol("test", 3, 1.1, 2.2, 3.3, 4.4, 5.5, 6, 7, 8, False)
         models = [pk.ThreeCompartmentModel(protocol)]
-        solution = pk.Solution(models)
+        solution = pk.Solution(models, True)
         self.assertEqual(solution.models[0], models[0])
 
