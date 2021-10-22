@@ -24,15 +24,15 @@ class Solution:
 
         for model in self.models:
             if model.protocol.comps == 2:
-                model_type = " + IV"
+                model_type = ", IV"
                 if model.protocol.dose_on == 0:
-                    dose_type = " + Instantaneous"
+                    dose_type = ", Instantaneous"
 
                 elif model.protocol.dose_off == 0:
-                    dose_type = " + Continuous"
+                    dose_type = ", Continuous"
 
                 else:
-                    dose_type = " + Intermittent"
+                    dose_type = ", Intermittent"
 
                 plt.plot(model.sol.t, model.sol.y[0, :],
                          label=model.protocol.label + model_type + dose_type + '- q_c')
@@ -41,16 +41,16 @@ class Solution:
                          '- q_p1')
 
             elif model.protocol.comps == 3:
-                model_type = " + Subcutaneous"
+                model_type = ", Subcutaneous"
 
                 if model.protocol.dose_on == 0:
-                    dose_type = " + Instantaneous"
+                    dose_type = ", Instantaneous"
 
                 elif model.protocol.dose_off == 0:
-                    dose_type = " + Continuous"
+                    dose_type = ", Continuous"
 
                 else:
-                    dose_type = " + Intermittent"
+                    dose_type = ", Intermittent"
                 
                 plt.plot(model.sol.t, model.sol.y[0, :],
                          label=model.protocol.label + model_type + dose_type + 
