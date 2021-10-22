@@ -120,6 +120,7 @@ the dose function is as below:
 If the .csv file used to import parameters is as below:
 
 "Ex. 1", 2,1,1,0.5,1,1,15,20
+
 "Ex. 2", 3,1,1,0.5,1,1,15,20,1
 
 which is interpreted by the model as:
