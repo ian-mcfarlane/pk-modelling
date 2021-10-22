@@ -1,5 +1,6 @@
 import matplotlib.pylab as plt
-
+import matplotlib.pyplot 
+import numpy as np
 
 class Solution:
     """This code will import the list models, which contains model objects
@@ -25,24 +26,36 @@ class Solution:
         the quantity of drugs in the third comparment (e.g. subcutaneous
         scenario) at all time points.  """
 
+        num_graphs = np.linspace(1, int(len(self.models)), int(len(self.models)))
+        fig = matplotlib.pyplot.figure(figsize=(10.0,3.0))  
+
         for model in self.models:
+            count = 0
+            count = count +1
+
             if model.protocol.comps == 2:
+                ax(count)=plt.subplot(2,2,count)
+                ax(count).set_ylabel("drug mass [ng]")
+                ax(count).set_xlabel("time [h]")
                 plt.plot(model.sol.t, model.sol.y[0, :],
-                         label=model.protocol.label + '- q_c')
+                        label=model.protocol.label + '- q_c')
                 plt.plot(model.sol.t, model.sol.y[1, :],
-                         label=model.protocol.label + '- q_p1')
+                        label=model.protocol.label + '- q_p1')
+                
 
             else:
+                ax(count)=plt.subplot(2,2,count)
+                ax(count).set_ylabel("drug mass [ng]")
+                ax(count).set_xlabel("time [h]")
                 plt.plot(model.sol.t, model.sol.y[0, :],
-                         label=model.protocol.label + '- q_o')
+                        label=model.protocol.label + '- q_o')
                 plt.plot(model.sol.t, model.sol.y[1, :],
-                         label=model.protocol.label + '- q_c')
+                        label=model.protocol.label + '- q_c')
                 plt.plot(model.sol.t, model.sol.y[2, :],
-                         label=model.protocol.label + '- q_p1')
-
-        plt.legend()
-        plt.title("The change in drug quantity")
-        plt.ylabel('drug mass [ng]')
-        plt.xlabel('time [h]')
+                        label=model.protocol.label + '- q_p1')
+        
         plt.show()
+        
 
+
+        
