@@ -75,7 +75,7 @@ Each parameter is explained below:
 # Outputs
 The model outputs a graph representing the change in drug quantity for each compartment for each set of parameters input.
 
-# Appendix: Dosing functions
+# Appendix 1: Dosing functions
 The dosing regimen is specified by three parameters in the model inputs:
 
 * X - the amount of drug in ng administered
@@ -115,3 +115,21 @@ For example, if:
 the dose function is as below:
 
 ![dose_func_ex_3](https://user-images.githubusercontent.com/92573875/138295483-69d58f80-8fce-4aaf-a26a-2e6d1ab5f769.png)
+
+# Appendix 2: Full Example
+If the .csv file used to import parameters is as below:
+
+"Ex. 1", 2,1,1,0.5,1,1,15,20
+"Ex. 2", 3,1,1,0.5,1,1,15,20,1
+
+which is interpreted by the model as:
+
+| label | comps | Q_p1 | V_c | V_p1 | CL  | X | dose_on | dose_off  | k_a  | graph_preview |
+| ----- | --- | --- | ------- | --- | --- | ------- | --- | --- | ------- | ------- |
+| Ex. 1 | 2 | 1 | 1 | 0.5 | 1 | 1 | 15 | 20 | (0) | (False) |
+| Ex. 2 | 3 | 1 | 1 | 0.5 | 1 | 1 | 15 | 20 | 1 | (False) |
+
+Running these together through the model, we can compare the intravenous (Ex. 1) with subcutaneous (Ex. 2) dosing and the model saves the below graph:
+
+![example_output](https://user-images.githubusercontent.com/92573875/138458278-7880c6fa-f375-484f-a90e-756d45c95647.png)
+
