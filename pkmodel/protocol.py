@@ -41,8 +41,7 @@ class Protocol:
         if (float(Q_p1) >= 0):
             self.Q_p1 = float(Q_p1)
         else:
-            raise ValueError("Compartment transition rate must be"
-                             + "non-negative")
+            raise ValueError("Compartment transition rate must be non-negative")
         if (float(V_c) > 0 and float(V_p1) > 0):
             self.V_c = float(V_c)
             self.V_p1 = float(V_p1)
@@ -67,8 +66,7 @@ class Protocol:
         if (float(k_a) >= 0):
             self.k_a = float(k_a)
         else:
-            raise ValueError("Subcutaneous absorption rate must be"
-                             + "non-negative")
+            raise ValueError("Subcutaneous absorption rate must be non-negative")
 
         self.eval_subdiv = 1000
         self.t_eval = np.linspace(0, 1, self.eval_subdiv)
