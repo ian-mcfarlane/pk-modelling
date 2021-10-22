@@ -1,4 +1,4 @@
-name: OS Tests
+name: Run Coverage
 
 on:
   workflow_dispatch:
