@@ -21,6 +21,13 @@ def parse_args(argv=None):
     return args
 
 
+def create_model(components, protocol):
+    if components == 2:
+        return pk.model.TwoCompartmentModel(protocol)
+    elif components == 3:
+        return pk.model.ThreeCompartmentModel(protocol)
+
+
 if __name__ == "__main__":
     args = parse_args()
 
@@ -39,11 +46,8 @@ if __name__ == "__main__":
         # create protocol
         protocol = pk.protocol.Protocol(*model_params)
 
-        # Check if 2 or 3 component model
-        if model_params[1] == 2:
-            models.append(pk.model.TwoCompartmentModel(protocol))
-        elif model_params[1] == 3:
-            models.append(pk.model.ThreeCompartmentModel(protocol))
+        # Check if 2 or 3 component model and append to models list
+        models.append(create_model(model_params[1], protocol))
 
     # Generate graph
     solution = pk.solution.Solution(models, no_graph=args.no_graph)
