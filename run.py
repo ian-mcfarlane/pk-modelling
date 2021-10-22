@@ -13,8 +13,8 @@ def parse_args(argv=None):
     parser = argparse.ArgumentParser(description="Plot PK models using 2 or 3 compartment models")
     parser.add_argument('-d', '--data_root', type=str, required=False, help="Path to location of csv file (default = './'",
                         default='./')
-    parser.add_argument('-f', '--file_name', type=str, required=False, help="Filename for csv file containing model parameters",
-                        default='example.csv')
+    parser.add_argument('-f', '--file_name', type=str, required=False,
+                        help="Filename for csv file containing model parameters", default='example.csv')
     parser.add_argument('-n', '--no_graph', action="store_true", help="Do not show the graph")
     args = parser.parse_args(argv)
 
