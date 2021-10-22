@@ -11,7 +11,7 @@ class ProtocolTest(unittest.TestCase):
         Tests Protocol creation.
         """
         # Test protocol creation with expected parameters
-        protocol = pk.Protocol("test", 3, 1.1, 2.2, 3.3, 4.4, 5.5, 6, 7, 8, False)
+        protocol = pk.Protocol("test", 3, 1.1, 2.2, 3.3, 4.4, 5.5, 0, 7, 8, False)
         self.assertEqual(protocol.label, "test")
         self.assertEqual(protocol.comps, 3)
         self.assertEqual(protocol.Q_p1, 1.1)
@@ -42,14 +42,34 @@ class ProtocolTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             protocol = pk.Protocol("test", 2, 1.1, 2.2, 3.3, -4.4, 5.5, 6)
         with self.assertRaises(ValueError):
-            protocol = pk.Protocol("test", "hello", 1.1, 2.2, 3.3, -4.4, 5.5, 6)
+            protocol = pk.Protocol("test", 2, 1.1, 2.2, 3.3, 4.4, -5.5, 6)
+        with self.assertRaises(ValueError):
+            protocol = pk.Protocol("test", 2, 1.1, 2.2, 3.3, 4.4, 5.5, -6)
+        with self.assertRaises(ValueError):
+            protocol = pk.Protocol("test", 2, 1.1, 2.2, 3.3, 4.4, 5.5, 6, -7, 8)
+        with self.assertRaises(ValueError):
+            protocol = pk.Protocol("test", 2, 1.1, 2.2, 3.3, 4.4, 5.5, 6, 7, -8)
+        with self.assertRaises(ValueError):
+            protocol = pk.Protocol("test", "hello", 1.1, 2.2, 3.3, 4.4, 5.5, 6)
 
     def test__eq__(self):
         """
         Tests Protocol equality function.
         """
         protocol1 = pk.Protocol("test", 2, 1.1, 2.2, 3.3, 4.4, 5.5, 6, 7, 8, False)
-        protocol2 = pk.Protocol("test", 3, 8.8, 7.7, 6.6, 5.5, 4.4, 3, 2, 1, False)
         self.assertEqual(protocol1, protocol1)
-        self.assertNotEqual(protocol1, protocol2)
+
+        protocols = [
+            pk.Protocol("test", 3, 1.1, 2.2, 3.3, 4.4, 5.5, 6, 7, 8, False),
+            pk.Protocol("test", 2, 1, 2.2, 3.3, 4.4, 5.5, 6, 7, 8, False),
+            pk.Protocol("test", 2, 1.1, 2, 3.3, 4.4, 5.5, 6, 7, 8, False),
+            pk.Protocol("test", 2, 1.1, 2.2, 3, 4.4, 5.5, 6, 7, 8, False),
+            pk.Protocol("test", 2, 1.1, 2.2, 3.3, 4, 5.5, 6, 7, 8, False),
+            pk.Protocol("test", 2, 1.1, 2.2, 3.3, 4.4, 5, 6, 7, 8, False),
+            pk.Protocol("test", 2, 1.1, 2.2, 3.3, 4.4, 5.5, 0, 7, 8, False),
+            pk.Protocol("test", 2, 1.1, 2.2, 3.3, 4.4, 5.5, 6, 0, 8, False),
+            pk.Protocol("test", 2, 1.1, 2.2, 3.3, 4.4, 5.5, 6, 7, 0, False)
+        ]
+        for other_protocol in protocols:
+            self.assertNotEqual(protocol1, other_protocol)
 
