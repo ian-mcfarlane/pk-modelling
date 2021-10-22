@@ -44,6 +44,7 @@ class Solution:
                          + '- q_p1')
 
             elif model.protocol.comps == 3:
+                model_type = ", SC"
                 plt.plot(model.sol.t, model.sol.y[0, :],
                          label=model.protocol.label + model_type + dose_type
                          + '- q_o')
