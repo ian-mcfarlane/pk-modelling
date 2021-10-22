@@ -8,9 +8,10 @@ class Solution:
     Each model will have attributes associated with it such as sol (solution)
     and protocol."""
 
-    def __init__(self, models):
+    def __init__(self, models, no_graph=False):
         self.models = models
-        self.graph()
+        if not no_graph:
+            self.graph()
 
     def graph(self):
         """Function graph will use the for loop to go through the list of models.

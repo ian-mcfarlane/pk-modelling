@@ -15,6 +15,7 @@ def parse_args(argv=None):
                         default='./')
     parser.add_argument('-f', '--file_name', type=str, required=False, help="Filename for csv file containing model parameters",
                         default='example.csv')
+    parser.add_argument('-n', '--no_graph', action="store_true", help="Do not show the graph")
     args = parser.parse_args(argv)
 
     return args
@@ -45,4 +46,4 @@ if __name__ == "__main__":
             models.append(pk.model.ThreeCompartmentModel(protocol))
 
     # Generate graph
-    solution = pk.solution.Solution(models)
+    solution = pk.solution.Solution(models, no_graph=args.no_graph)
