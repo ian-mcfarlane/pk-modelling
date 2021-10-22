@@ -25,34 +25,27 @@ class Solution:
         scenario) at all time points.  """
 
         for model in self.models:
-            if model.protocol.dose_on == 0:
-                dose_type = ", Instantaneous"
-
-            elif model.protocol.dose_off == 0:
-                dose_type = ", Continuous"
-
-            else:
-                dose_type = ", Intermittent"
+            dose_type = self.get_dose_type(model)
 
             if model.protocol.comps == 2:
                 model_type = ", IV"
                 plt.plot(model.sol.t, model.sol.y[0, :],
-                         label=model.protocol.label + model_type + dose_type
+                         label=model.protocol.label + model_type + ', ' + dose_type
                          + '- q_c')
                 plt.plot(model.sol.t, model.sol.y[1, :],
-                         label=model.protocol.label + model_type + dose_type
+                         label=model.protocol.label + model_type + ', ' + dose_type
                          + '- q_p1')
 
             elif model.protocol.comps == 3:
                 model_type = ", SC"
                 plt.plot(model.sol.t, model.sol.y[0, :],
-                         label=model.protocol.label + model_type + dose_type
+                         label=model.protocol.label + model_type + ', ' + dose_type
                          + '- q_o')
                 plt.plot(model.sol.t, model.sol.y[1, :],
-                         label=model.protocol.label + model_type + dose_type
+                         label=model.protocol.label + model_type + ', ' + dose_type
                          + '- q_c')
                 plt.plot(model.sol.t, model.sol.y[2, :],
-                         label=model.protocol.label + model_type + dose_type
+                         label=model.protocol.label + model_type + ', ' + dose_type
                          + '- q_p1')
 
         plt.legend()
@@ -63,3 +56,13 @@ class Solution:
         plt.savefig("Outputs/PK-Modelling-" + str(now.strftime("%Y%m%d_%H-%M-%S")) + ".png")
         if not self.no_graph:
             plt.show()
+
+    def get_dose_type(self, model):
+        if model.protocol.dose_on == 0:
+            return "Instantaneous"
+
+        elif model.protocol.dose_off == 0:
+            return "Continuous"
+
+        else:
+            return "Intermittent"
