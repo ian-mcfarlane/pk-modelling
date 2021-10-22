@@ -42,7 +42,7 @@ if __name__ == "__main__":
         if model_params[1] == 2:
             models.append(pk.model.TwoCompartmentModel(protocol))
         elif model_params[1] == 3:
-            models.append(pk.model.ThreeCompartmentModel(protocol)
+            models.append(pk.model.ThreeCompartmentModel(protocol))
 
     # Generate graph
     solution = pk.solution.Solution(models)
