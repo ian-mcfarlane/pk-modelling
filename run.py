@@ -2,8 +2,6 @@ import argparse
 import pkmodel as pk
 import csv
 from pathlib import Path
-import sys
-import numpy as np
 
 
 def parse_args(argv=None):
@@ -20,6 +18,7 @@ def parse_args(argv=None):
     args = parser.parse_args(argv)
     
     return args
+
 
 if __name__ == "__main__":
     args = parse_args()
@@ -44,10 +43,7 @@ if __name__ == "__main__":
             models.append(pk.model.TwoCompartmentModel(protocol))
         elif model_params[1] == 3:
             models.append(pk.model.ThreeCompartmentModel(protocol))
-
-        else:
-            raise ValueError("Component number must be either 2 or 3.")
-        
+     
     # Generate graph
     solution = pk.solution.Solution(models)
 
