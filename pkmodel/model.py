@@ -12,7 +12,8 @@ class AbstractModel(ABC):
     def __init__(self, protocol: Protocol):
         """ Constructs object using a Protocol object
 
-        :param protocol: Protocol object with all necessary parameters for model creation
+        :param protocol: Protocol object with all necessary parameters for 
+        model creation
         :type protocol: Protocol
         """
         self.protocol = protocol
@@ -32,7 +33,8 @@ class TwoCompartmentModel(AbstractModel):
         """
         Constructs object using a Protocol object
 
-        :param protocol: Protocol object with all necessary parameters for model creation
+        :param protocol: Protocol object with all necessary parameters for 
+        model creation
         :type protocol: Protocol
         """
         self.protocol = protocol
@@ -85,7 +87,8 @@ class ThreeCompartmentModel(AbstractModel):
         """
         Constructs object using a Protocol object
 
-        :param protocol: Protocol object with all necessary parameters for model creation
+        :param protocol: Protocol object with all necessary parameters for 
+        model creation
         :type protocol: Protocol
         """
         self.protocol = protocol

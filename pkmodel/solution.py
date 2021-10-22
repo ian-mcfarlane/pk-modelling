@@ -53,7 +53,7 @@ class Solution:
 
                 else:
                     dose_type = ", Intermittent"
-                
+
                 plt.plot(model.sol.t, model.sol.y[0, :],
                          label=model.protocol.label + model_type + dose_type
                          + '- q_o')
