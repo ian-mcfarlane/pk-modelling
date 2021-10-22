@@ -35,7 +35,7 @@ class TwoCompartmentModel(AbstractModel):
         :param protocol: Protocol object with all necessary parameters for model creation
         :type protocol: Protocol
         """
-        self.protocol = protocol
+        super().__init__(protocol)
         self.sol = self.solve_ode()
 
     def rhs(self, t, y):
@@ -88,7 +88,7 @@ class ThreeCompartmentModel(AbstractModel):
         :param protocol: Protocol object with all necessary parameters for model creation
         :type protocol: Protocol
         """
-        self.protocol = protocol
+        super().__init__(protocol)
         self.sol = self.solve_ode()
 
     def rhs(self, t, y):
