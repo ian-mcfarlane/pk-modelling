@@ -102,26 +102,16 @@ class Protocol:
             return X * ((self.eval_subdiv - 1) * t % (self.dose_on
                         + self.dose_off) < self.dose_on)
 
-    def __eq__(self, other_prot):
-        if self.label != other_prot.label:
-            return False
-        elif self.comps != other_prot.comps:
-            return False
-        elif self.Q_p1 != other_prot.Q_p1:
-            return False
-        elif self.V_c != other_prot.V_c:
-            return False
-        elif self.V_p1 != other_prot.V_p1:
-            return False
-        elif self.CL != other_prot.CL:
-            return False
-        elif self.X != other_prot.X:
-            return False
-        elif self.dose_on != other_prot.dose_on:
-            return False
-        elif self.dose_off != other_prot. dose_off:
-            return False
-        elif self.k_a != other_prot.k_a:
-            return False
+    def __eq__(self, other_prot) -> bool:
+        prot_equals = ((self.label == other_prot.label)
+                       * (self.comps == other_prot.comps)
+                       * (self.Q_p1 == other_prot.Q_p1)
+                       * (self.V_c == other_prot.V_c)
+                       * (self.V_p1 == other_prot.V_p1)
+                       * (self.CL == other_prot.CL)
+                       * (self.X == other_prot.X)
+                       * (self.dose_on == other_prot.dose_on)
+                       * (self.dose_off == other_prot. dose_off)
+                       * (self.k_a == other_prot.k_a))
 
-        return True
+        return prot_equals
