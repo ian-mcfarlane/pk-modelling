@@ -1,4 +1,5 @@
 import unittest
+import matplotlib
 import pkmodel as pk
 
 
@@ -51,6 +52,9 @@ class ProtocolTest(unittest.TestCase):
             protocol = pk.Protocol("test", 2, 1.1, 2.2, 3.3, 4.4, 5.5, 6, 7, -8)
         with self.assertRaises(ValueError):
             protocol = pk.Protocol("test", "hello", 1.1, 2.2, 3.3, 4.4, 5.5, 6)
+
+        matplotlib.use('Agg')
+        protocol = pk.Protocol("test", 3, 1.1, 2.2, 3.3, 4.4, 5.5, 0, 7, 8, True)
 
     def test__eq__(self):
         """
