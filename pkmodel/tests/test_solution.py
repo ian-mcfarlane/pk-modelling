@@ -1,4 +1,5 @@
 import unittest
+import matplotlib
 import pkmodel as pk
 
 
@@ -25,7 +26,8 @@ class SolutionTest(unittest.TestCase):
             pk.TwoCompartmentModel(pk.Protocol("test", 2, 1.1, 2.2, 3.3, 4.4, 5.5, 6, 7, 8, False)),
             pk.ThreeCompartmentModel(pk.Protocol("test", 3, 1.1, 2.2, 3.3, 4.4, 5.5, 0, 7, 8, False)),
             pk.ThreeCompartmentModel(pk.Protocol("test", 3, 1.1, 2.2, 3.3, 4.4, 5.5, 6, 0, 8, False)),
-            pk.ThreeCompartmentModel(pk.Protocol("test", 3, 1.1, 2.2, 3.3, 4.4, 5.5, 6, 7, 8, False))
+            pk.ThreeCompartmentModel(pk.Protocol("test", 3, 1.1, 2.2, 3.3, 4.4, 5.5, 6, 7, 8, False)),
         ]
-        solution = pk.Solution(models, True)
+        matplotlib.use("Agg")
+        solution = pk.Solution(models, False)
         solution.graph()
