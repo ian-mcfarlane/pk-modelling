@@ -36,10 +36,11 @@ class Solution:
                     dose_type = ", Intermittent"
 
                 plt.plot(model.sol.t, model.sol.y[0, :],
-                         label=model.protocol.label + model_type + dose_type + '- q_c')
+                         label=model.protocol.label + model_type + dose_type
+                         + '- q_c')
                 plt.plot(model.sol.t, model.sol.y[1, :],
-                         label=model.protocol.label + model_type + dose_type + 
-                         '- q_p1')
+                         label=model.protocol.label + model_type + dose_type
+                         + '- q_p1')
 
             elif model.protocol.comps == 3:
                 model_type = ", Subcutaneous"
@@ -52,16 +53,16 @@ class Solution:
 
                 else:
                     dose_type = ", Intermittent"
-                
+
                 plt.plot(model.sol.t, model.sol.y[0, :],
-                         label=model.protocol.label + model_type + dose_type + 
-                         '- q_o')
+                         label=model.protocol.label + model_type + dose_type
+                         + '- q_o')
                 plt.plot(model.sol.t, model.sol.y[1, :],
-                         label=model.protocol.label + model_type + dose_type + 
-                         '- q_c')
+                         label=model.protocol.label + model_type + dose_type
+                         + '- q_c')
                 plt.plot(model.sol.t, model.sol.y[2, :],
-                         label=model.protocol.label + model_type + dose_type + 
-                         '- q_p1')
+                         label=model.protocol.label + model_type + dose_type
+                         + '- q_p1')
 
         plt.legend()
         plt.title("The change in drug quantity")
