@@ -23,7 +23,12 @@ class AbstractModel(ABC):
 
     @abstractmethod
     def solve_ode(self):
-        pass
+        sol = scipy.integrate.solve_ivp(
+            fun=lambda t, y: self.rhs(t, y),
+            t_span=[self.protocol.t_eval[0], self.protocol.t_eval[-1]],
+            y0=self.protocol.y0, t_eval=self.protocol.t_eval
+        )
+        return sol
 
 
 class TwoCompartmentModel(AbstractModel):
@@ -66,14 +71,7 @@ class TwoCompartmentModel(AbstractModel):
         :return: The solved ODE
         :rtype: list[float]
         """
-
-        sol = scipy.integrate.solve_ivp(
-            fun=lambda t, y: self.rhs(t, y),
-            t_span=[self.protocol.t_eval[0], self.protocol.t_eval[-1]],
-            y0=self.protocol.y0, t_eval=self.protocol.t_eval
-        )
-
-        return sol
+        return super().solve_ode()
 
     def __eq__(self, other_model) -> bool:
         return super().__eq__(other_model)
@@ -122,14 +120,7 @@ class ThreeCompartmentModel(AbstractModel):
         :return: The solved ODE
         :rtype: list[float]
         """
-
-        sol = scipy.integrate.solve_ivp(
-            fun=lambda t, y: self.rhs(t, y),
-            t_span=[self.protocol.t_eval[0], self.protocol.t_eval[-1]],
-            y0=self.protocol.y0, t_eval=self.protocol.t_eval
-        )
-
-        return sol
+        return super().solve_ode()
 
     def __eq__(self, other_model) -> bool:
         return super().__eq__(other_model)
