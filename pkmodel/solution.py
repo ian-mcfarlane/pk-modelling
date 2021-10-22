@@ -24,7 +24,7 @@ class Solution:
 
         for model in self.models:
             if model.protocol.comps == 2:
-                model_type = "IV"
+                model_type = " + IV"
                 if model.protocol.dose_on == 0:
                     dose_type = " + Instantaneous"
 
@@ -35,12 +35,13 @@ class Solution:
                     dose_type = " + Intermittent"
 
                 plt.plot(model.sol.t, model.sol.y[0, :],
-                         label=model_type + dose_type + '- q_c')
+                         label=model.protocol.label + model_type + dose_type + '- q_c')
                 plt.plot(model.sol.t, model.sol.y[1, :],
-                         label=model_type + dose_type + '- q_p1')
+                         label=model.protocol.label + model_type + dose_type + 
+                         '- q_p1')
 
             elif model.protocol.comps == 3:
-                model_type = "Subcutaneous"
+                model_type = " + Subcutaneous"
 
                 if model.protocol.dose_on == 0:
                     dose_type = " + Instantaneous"
@@ -52,11 +53,14 @@ class Solution:
                     dose_type = " + Intermittent"
                 
                 plt.plot(model.sol.t, model.sol.y[0, :],
-                         label=model_type + dose_type + '- q_o')
+                         label=model.protocol.label + model_type + dose_type + 
+                         '- q_o')
                 plt.plot(model.sol.t, model.sol.y[1, :],
-                         label=model_type + dose_type + '- q_c')
+                         label=model.protocol.label + model_type + dose_type + 
+                         '- q_c')
                 plt.plot(model.sol.t, model.sol.y[2, :],
-                         label=model_type + dose_type + '- q_p1')
+                         label=model.protocol.label + model_type + dose_type + 
+                         '- q_p1')
 
         plt.legend()
         plt.title("The change in drug quantity")
