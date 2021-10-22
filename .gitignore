@@ -136,3 +136,6 @@ dmypy.json
 
 # test csv
 test.csv
+
+# Model outputs
+Outputs/
