@@ -5,6 +5,7 @@
 [![Run unit tests](https://github.com/ian-mcfarlane/pk-modelling/actions/workflows/python-unit-tests.yml/badge.svg)](https://github.com/ian-mcfarlane/pk-modelling/actions/workflows/python-unit-tests.yml)
 [![OS Tests](https://github.com/ian-mcfarlane/pk-modelling/actions/workflows/OS-tests.yml/badge.svg)](https://github.com/ian-mcfarlane/pk-modelling/actions/workflows/OS-tests.yml)
 [![codecov](https://codecov.io/gh/ian-mcfarlane/pk-modelling/branch/master/graph/badge.svg?token=P9007EI2KZ)](https://codecov.io/gh/ian-mcfarlane/pk-modelling)
+[![BCH compliance](https://bettercodehub.com/edge/badge/ian-mcfarlane/pk-modelling?branch=master)](https://bettercodehub.com/)
 
 # Pharmacokinetic Model for Intravenous and Subcutaneous Dosing
 This Python library models the diffusion of a drug through the body, using simple 2- and 3-compartment pharmacokinetic models. This project does not feature interactions with pharmacodynamic models.
