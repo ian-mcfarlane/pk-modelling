@@ -8,6 +8,11 @@
 [![BCH compliance](https://bettercodehub.com/edge/badge/ian-mcfarlane/pk-modelling?branch=master)](https://bettercodehub.com/)
 
 # Pharmacokinetic Model for Intravenous and Subcutaneous Dosing
+To install this package using pip use the command:
+
+`pip3 install -i https://test.pypi.org/simple/ pkmodel-sabs-group4`
+
+
 This Python library models the diffusion of a drug through the body, using simple 2- and 3-compartment pharmacokinetic models. This project does not feature interactions with pharmacodynamic models.
 
 These models can be used to ensure there are sufficient concentrations of the drug administered according to its toxic threshold and the desired efficacy of the drug regimen.
