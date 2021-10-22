@@ -103,7 +103,8 @@ class Protocol:
                         + self.dose_off) < self.dose_on)
 
     def __eq__(self, other_prot) -> bool:
-        prot_equals = ((self.comps == other_prot.comps)
+        prot_equals = ((self.label == other_prot.label)
+                       * (self.comps == other_prot.comps)
                        * (self.Q_p1 == other_prot.Q_p1)
                        * (self.V_c == other_prot.V_c)
                        * (self.V_p1 == other_prot.V_p1)
